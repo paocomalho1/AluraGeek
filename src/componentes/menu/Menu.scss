@@ -1,0 +1,16 @@
+@import '../../utilitarios/util.scss';
+
+.lupa{
+    display:none !important;
+    @include medio{
+        display:block !important;
+        margin-bottom: 0 !important;
+    }
+}
+.cabecalho{
+    &__responsivo-input{
+        @include medio{
+           display:none !important;
+       }
+   }
+}

@@ -1,0 +1,13 @@
+@import '../../utilitarios/util.scss';
+
+.cabecalho{
+    &__botao{
+        border-radius: 0 !important;
+        @include medio{
+            display:none !important;
+        }
+        &:hover{
+            background-color: #D4E4FA !important;
+        }
+    }
+}

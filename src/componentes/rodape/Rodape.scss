@@ -1,0 +1,38 @@
+@import '../../utilitarios/util.scss';
+
+.rodape{
+    &__cor-fundo{
+        background-color: #EAF2FD;
+    }
+    &__responsivo{
+        display: flex;
+        align-items:flex-start;
+        @include medio{
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
+        }
+        @include largo{
+            flex-direction: column;
+        }
+    }
+    &__responsivo-itens{
+        margin-right:5rem;
+        @include medio{
+            margin:0 !important;
+            margin-bottom: 2rem !important;
+        }
+    }
+    &__responsivo-item{
+        text-align: left;
+        padding-left: 0 !important;
+        @include medio{
+            text-align: center;
+        }
+    }
+}
+.responsivo{
+    @include medio{
+        display:none !important
+    }
+}

@@ -1,0 +1,25 @@
+@import '../../utilitarios/util.scss';
+
+.produto{
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    @include pequeno{
+        padding-top: 0 !important;
+    }
+    &__img-unit{
+        height: 403px;
+        width: 95%;
+        @include medio{
+            height: 254px;
+        }
+        @include pequeno{
+            margin-bottom: 2rem !important;
+            width: 100%;
+        }
+    }
+    &__texto{
+        @include medio{
+            font-size: 0.9rem;
+        }
+    }
+}

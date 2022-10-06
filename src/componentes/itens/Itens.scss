@@ -1,0 +1,7 @@
+@import '../../utilitarios/util.scss';
+
+.responsivo{
+    @include medio{
+        display:none !important
+    }
+}

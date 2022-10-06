@@ -1,0 +1,9 @@
+@mixin pequeno {
+    @media only screen and (max-width: 540px){ @content;}
+}
+@mixin medio {
+    @media only screen and (max-width: 992px){ @content;}
+}
+@mixin largo {
+    @media only screen and (max-width: 1140px){ @content;}
+}

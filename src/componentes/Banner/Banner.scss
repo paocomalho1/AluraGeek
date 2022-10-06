@@ -1,0 +1,15 @@
+@import '../../utilitarios/util.scss';
+
+.carousel{
+    &__botao{
+    border-radius: 0 !important;
+}
+    &__texto{
+        left: 8.5% !important;
+        right: 8.5% !important;
+        @include pequeno{
+            left: 5% !important;
+            right: 5% !important;
+        }
+    }
+}
