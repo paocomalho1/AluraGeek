@@ -4,7 +4,7 @@ import json from './componentes/itens/ItensDados.json'
 import http from './http';
 
 function App() {
-  const [produtos ,setProdutos] = useState(json)
+  const [produtos ,setProdutos] = useState([json])
   const [filtragem, setFiltragem] = useState(produtos)
   const [user,setUser] = useState(
     {
@@ -25,8 +25,8 @@ function App() {
     })
     http.get('users/1/produtos')
     .then(resposta => {
-      setProdutos(resposta.data.results)
-      setFiltragem(resposta.data.results)
+      setProdutos(resposta.data)
+      setFiltragem(resposta.data)
     }).catch(
       setProdutos(produtos),
       setFiltragem(produtos),
