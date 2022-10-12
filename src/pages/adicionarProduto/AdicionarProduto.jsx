@@ -22,7 +22,7 @@ export default function AdicionarProduto(props){
         if(categoria == "Star Wars"){
             categoriaPost = 'SW'
         }else if(categoria == "Console"){
-            categoriaPost = 'SW'
+            categoriaPost = 'C'
         }else if(categoria == "Diversos"){
             categoriaPost = 'D'
         }
