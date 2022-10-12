@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import BotaoLoginCadastroForm from '../botao/BotaoLoginCadastroForm'
-import Input from '../input/Input'
+import BotaoLoginCadastroForm from '../../componentes/botao/BotaoLoginCadastroForm'
+import Input from '../../componentes/input/Input'
 import './Login.scss'
 export default function Login(props){
     const navigate = useNavigate();
@@ -9,12 +9,21 @@ export default function Login(props){
     let [senha,setSenha] = useState('')
     function onSubmit(evento){
         evento.preventDefault()
-        if(props.user.email == email && props.user.senha == senha){
-            alert('Login realizado com sucesso')
-            navigate('/produtos')
+        const error_email =document.querySelector('.error-email')
+        const error_senha =document.querySelector('.error-senha')
+        if(props.user.email == email){
+            if(props.user.senha == senha){
+                alert('Login realizado com sucesso')
+                navigate('/')
+                props.setAutenticar(true)
+            }else{
+                error_senha.innerHTML = 'Senha errada' 
+                error_email.innerHTML = ''
+            }
+        }else{
+            error_email.innerHTML = 'Email não cadastrado'
+            error_senha.innerHTML = ''
         }
-        setEmail('')
-        setSenha('')
     }
     return(
         <main class="container-fluid text-center login bg-light">
@@ -25,11 +34,13 @@ export default function Login(props){
                         <Input type="email" onChange={evento =>{setEmail(evento.target.value)}} value={email}>
                             Escreva seu email
                         </Input>
+                        <p className="error-email text-danger m-0 p-0 text-start"></p>
                     </div>
                     <div class="mb-3">
                         <Input type="password" onChange={evento =>{setSenha(evento.target.value)}} value={senha}>
                             Escreva sua senha
                         </Input>
+                        <p className="error-senha text-danger m-0 p-0 text-start"></p>
                     </div>
                     <BotaoLoginCadastroForm>Entrar</BotaoLoginCadastroForm>
                 </form>

@@ -1,6 +1,6 @@
 import './Produto.scss'
-import Itens from '../itens/Itens'
-import { Navigate, useNavigate, useParams } from 'react-router-dom'
+import Itens from '../../componentes/itens/Itens'
+import { useNavigate, useParams } from 'react-router-dom'
 export default function Produto(props){
     const { id } = useParams()
     const navegate = useNavigate()
@@ -9,7 +9,6 @@ export default function Produto(props){
         const produto = props.produtos.find(prod => prod.id == id)
         return produto
     }
-    // console.log(produto)
 
     if(props.produtos.find(prod => prod.id == id)){
          produto = SearchProduto()
@@ -21,7 +20,7 @@ export default function Produto(props){
             <section class="container text-center produto">
                 <div class="row d-flex align-items-center">
                     <div class="col-lg-6 col-md-5 p-0">
-                        <img class="produto__img-unit"src="https://trello.com/1/cards/620bf3f8bf76ff71199adc94/attachments/620bf3f9bf76ff71199ade8f/previews/620bf3f9bf76ff71199ade94/download/star-wars.png" alt="" />
+                        <img class="produto__img-unit" src={produto.url} alt="" />
                     </div>
                     <div class="col-lg-6 col-md-7">
                         <div>
@@ -34,7 +33,10 @@ export default function Produto(props){
                         <h2 class="text-start">Produtos similares</h2>
                     </div>
                     {props.produtos.filter(prod => prod.categoria === produto.categoria).map(item =>
-                        <Itens item={item}/>
+                        <Itens 
+                        setProdutos={props.setProdutos}
+                        item={item}
+                        />
                     )}
                 </div>
             </section>

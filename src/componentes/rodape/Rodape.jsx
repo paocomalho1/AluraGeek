@@ -7,12 +7,6 @@ export default function Rodape(props){
     let [nome,setNome] = useState('')
     let [mensagem,setMensagem] = useState('')
 
-    // function onChangeNome(evento){
-    //     mensagem.nome = evento.target.value
-    // }
-    // function onChangeMensagem(evento){
-    //     mensagem.mensagem = evento.target.value
-    // }
     function onSubmit(evento){
         evento.preventDefault()
         props.setMensagens(mensagensAntigas => [...mensagensAntigas, {

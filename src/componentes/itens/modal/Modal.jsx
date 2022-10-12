@@ -1,37 +1,64 @@
 import { useEffect, useState } from "react"
-import Input from "../input/Input"
-import TextArea from "../input/TextArea"
+import http from "../../../http"
+import Input from "../../../componentes/input/Input"
+import Select from "../../../componentes/input/Select"
+import TextArea from "../../../componentes/input/TextArea"
 
 export default function Modal(props){
     let [id] = useState(props.produto.id)
-    let [titulo,setTitulo] = useState('')
-    let [preco,setPreco] = useState('')
-    let [categoria,setCategoria] = useState('')
-    let [url,setUrl] = useState('')
-    let [descricao,setDescricao] = useState('')
-    let atualizar = false
+    let [titulo,setTitulo] = useState(props.produto.titulo)
+    let [preco,setPreco] = useState(props.produto.preco)
+    let [categoria,setCategoria] = useState(props.produto.categoria)
+    let [url,setUrl] = useState(props.produto.url)
+    let [descricao,setDescricao] = useState(props.produto.descricao)
+    // useEffect(()=>{
+    //     http.get(`produtos/${id}/`)
+    //     .then(resposta =>{
+    //         setTitulo(resposta.data.titulo)
+    //         setPreco(resposta.data.preco)
+    //         setCategoria(resposta.data.categoria)
+    //         setUrl(resposta.data.url)
+    //         setDescricao(resposta.data.descricao)
+    //     })
+    // },[])
 
     function onSubmit(evento){
 
         //editar produto
+
         evento.preventDefault()
          const index = props.produtos.findIndex(prod => prod.id == props.produto.id)
          const lista = props.produtos
-          lista[index] = {
-              id: props.produto.id,
-              titulo: titulo,
-              preco: preco,
-              categoria: categoria,
-              url: url,
-              descricao:descricao,
-          }
+         lista[index] = {
+            id: props.produto.id,
+            titulo: titulo,
+            preco: preco,
+            categoria: categoria,
+            url: url,
+            descricao:descricao,
+        }
+        let categoriaPost
+        if(categoria == "Star Wars"){
+            categoriaPost = 'SW'
+        }else if(categoria == "Console"){
+            categoriaPost = 'SW'
+        }else if(categoria == "Diversos"){
+            categoriaPost = 'D'
+        }
+         http.put(`produtos/${id}/`,{
+         titulo: titulo,
+         preco: preco,
+         categoria: categoriaPost,
+         url: url,
+         descricao:descricao,
+         user:1
+        })
+        props.setProdutos(lista)
          setTitulo('')
          setPreco('')
-         setTitulo('')
          setCategoria('')
          setUrl('')
          setDescricao('')
-         props.setProdutos(lista)
          props.setEditar(true)
     }
       
@@ -52,9 +79,15 @@ export default function Modal(props){
                             </Input>
                         </div>
                         <div class="mb-3">
-                            <Input type="text" onChange={(evento) => {setCategoria(evento.target.value)}} value={categoria}>
-                                Categoria
-                            </Input>
+                        <Select
+                            opcao1="Star Wars"
+                            opcao2="Consoles"
+                            opcao3="Diversos"
+                            value={categoria}
+                            onChange={(evento) => {setCategoria(evento.target.value)}}
+                        >
+                            Categoria
+                        </Select>
                         </div>
                         <div class="mb-3">
                             <Input type="text" onChange={(evento) => {setTitulo(evento.target.value)}} value={titulo}>

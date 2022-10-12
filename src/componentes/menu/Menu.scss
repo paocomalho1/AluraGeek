@@ -13,4 +13,22 @@
            display:none !important;
        }
    }
+   &__responsivo-celular{
+    display:none;
+    @include medio{
+       display:block !important;
+   }
+}
+}
+.buscador{
+    background-color: #00000044;
+    &__conteiner{
+        position: relative;
+        z-index: -1;
+        height: 99px !important;
+        background-color: white;
+    }
+}
+.display-none{
+	display: none !important;
 }

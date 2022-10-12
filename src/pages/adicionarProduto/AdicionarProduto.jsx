@@ -1,10 +1,11 @@
 import { useState } from "react";
-import BotaoLoginCadastroForm from "../botao/BotaoLoginCadastroForm";
-import Input from "../input/Input";
-import Select from "../input/Select";
-import TextArea from "../input/TextArea";
+import BotaoLoginCadastroForm from "../../componentes/botao/BotaoLoginCadastroForm";
+import Input from "../../componentes/input/Input";
+import Select from "../../componentes/input/Select";
+import TextArea from "../../componentes/input/TextArea";
 import { v4 as uuidv4 } from 'uuid';
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import http from "../../http";
 
 export default function AdicionarProduto(props){
     const navigate = useNavigate();
@@ -14,16 +15,36 @@ export default function AdicionarProduto(props){
     let [categoria,setCategoria] = useState('')
     let [url,setUrl] = useState('')
     let [descricao,setDescricao] = useState('')
+
     function onSubmit(evento){
         evento.preventDefault()
-        props.setProdutos(produtosAntigos => [...produtosAntigos, {
-            id,
-            titulo,
-            preco,
-            categoria,
-            url,
-            descricao,
-        }])
+        let categoriaPost
+        if(categoria == "Star Wars"){
+            categoriaPost = 'SW'
+        }else if(categoria == "Console"){
+            categoriaPost = 'SW'
+        }else if(categoria == "Diversos"){
+            categoriaPost = 'D'
+        }
+         http.post('produtos/',
+             {
+                 titulo:titulo,
+                 preco:preco,
+                 categoria:categoriaPost,
+                 url: url,
+                 descricao:descricao,
+                 user:1,
+             }
+         )
+         props.setProdutos(produtosAntigos => [...produtosAntigos, {
+             id,
+             titulo,
+             preco,
+             categoria,
+             url,
+             descricao,
+         }])
+         
         setTitulo('')
         setPreco('')
         setTitulo('')
@@ -32,14 +53,13 @@ export default function AdicionarProduto(props){
         setDescricao('')
         props.setAdicionar(true)
         navigate('/produtos')
-        
     }
 
     return(
         <main class="container-fluid text-center login bg-light">
             <section class="row d-flex justify-content-center">
                 <form class="d-flex flex-column col-lg-6" onSubmit={onSubmit} action="/produtos">
-                    <h3 className="fw-bold mb-4 text-start">Adicionar novo produto</h3>
+                    <h3 className="fw-bold mb-4 text-start" onClick={() => {console.log(categoria)}}>Adicionar novo produto</h3>
                     <div class="mb-3">
                         <Input type="url" onChange={(evento) => {setUrl(evento.target.value)}} value={url}>
                             URL da imagem
@@ -50,10 +70,9 @@ export default function AdicionarProduto(props){
                             opcao1="Star Wars"
                             opcao2="Consoles"
                             opcao3="Diversos"
+                            onChange={(evento) => {setCategoria(evento.target.value)}}
                             value={categoria}
-                            setCategoria={setCategoria}
                         >
-                            Categoria
                         </Select>
                         {/* <Input type="text" onChange={(evento) => {setCategoria(evento.target.value)}} value={categoria}>
                             Categoria
