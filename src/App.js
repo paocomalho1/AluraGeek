@@ -2,6 +2,7 @@ import Router from './routes/Routes';
 import { useEffect, useState } from 'react';
 import json from './componentes/itens/ItensDados.json'
 import http from './http';
+import env from "react-dotenv";
 
 function App() {
   const [produtos ,setProdutos] = useState([json])
@@ -20,7 +21,13 @@ function App() {
   ])
   const [filtro, setFiltro] = useState("")
   useEffect(()=>{
-    http.get('users/1').then(resposta =>{
+    http.get('users/1',{
+      auth:{
+      username:env.user,
+      password:env.senha
+    }
+  }
+  ).then(resposta =>{
       setUser(resposta.data)
     })
     http.get('users/1/produtos')

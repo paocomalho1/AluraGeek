@@ -3,10 +3,17 @@ import '../../pages/corpo/Corpo.scss'
 import http from '../../http'
 import Modal from './modal/Modal'
 import '../../pages/produtos/Produtos.scss'
+import env from "react-dotenv";
+
 export default function Itens(props){
     function deletarProduto(id){
         const lista = props.produtos.filter(prod => prod.id !== id)
-        http.delete(`produtos/${id}/`)
+        http.delete(`produtos/${id}/`,{
+            auth:{
+                username:env.user,
+                password:env.senha
+            }
+            })
         props.setProdutos(lista)
         props.setDeletar(true)
     }
