@@ -2,7 +2,6 @@ import Router from './routes/Routes';
 import { useEffect, useState } from 'react';
 import json from './componentes/itens/ItensDados.json'
 import http from './http';
-import env from "react-dotenv";
 
 function App() {
   const [produtos ,setProdutos] = useState([json])
@@ -23,8 +22,8 @@ function App() {
   useEffect(()=>{
     http.get('users/1',{
       auth:{
-      username:env.user,
-      password:env.senha
+      username:process.env.REACT_APP_USER,
+      password:process.env.REACT_APP_SENHA
     }
   }
   ).then(resposta =>{

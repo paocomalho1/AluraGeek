@@ -3,15 +3,14 @@ import '../../pages/corpo/Corpo.scss'
 import http from '../../http'
 import Modal from './modal/Modal'
 import '../../pages/produtos/Produtos.scss'
-import env from "react-dotenv";
 
 export default function Itens(props){
     function deletarProduto(id){
         const lista = props.produtos.filter(prod => prod.id !== id)
         http.delete(`produtos/${id}/`,{
             auth:{
-                username:env.user,
-                password:env.senha
+                username:process.env.REACT_APP_USER,
+                password:process.env.REACT_APP_SENHA
             }
             })
         props.setProdutos(lista)

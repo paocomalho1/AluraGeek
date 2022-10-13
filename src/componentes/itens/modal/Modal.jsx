@@ -3,7 +3,6 @@ import http from "../../../http"
 import Input from "../../../componentes/input/Input"
 import Select from "../../../componentes/input/Select"
 import TextArea from "../../../componentes/input/TextArea"
-import env from "react-dotenv";
 
 export default function Modal(props){
     let [id] = useState(props.produto.id)
@@ -55,8 +54,8 @@ export default function Modal(props){
          user:1
         },{
             auth:{
-                username:env.user,
-                password:env.senha
+                username:process.env.REACT_APP_USER,
+                password:process.env.REACT_APP_SENHA
             }
             })
         props.setProdutos(lista)

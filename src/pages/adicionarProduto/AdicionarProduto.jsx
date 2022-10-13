@@ -6,7 +6,6 @@ import TextArea from "../../componentes/input/TextArea";
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from "react-router-dom";
 import http from "../../http";
-import env from "react-dotenv";
 
 export default function AdicionarProduto(props){
     const navigate = useNavigate();
@@ -37,8 +36,8 @@ export default function AdicionarProduto(props){
                  user:1,
              },{
                 auth:{
-                    username:env.user,
-                    password:env.senha
+                    username:process.env.REACT_APP_USER,
+                    password:process.env.REACT_APP_SENHA
                 }
                 }
          )
