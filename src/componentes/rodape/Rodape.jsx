@@ -9,12 +9,19 @@ export default function Rodape(props){
 
     function onSubmit(evento){
         evento.preventDefault()
-        props.setMensagens(mensagensAntigas => [...mensagensAntigas, {
-            nome,
-            mensagem
-        }])
-        setNome('')
-        setMensagem('')
+        if(nome.length < 3){
+            alert('Nome curto demais')
+        }else if(mensagem.length < 3){
+            alert('Mensagem curta demais')
+        }else{
+            evento.preventDefault()
+            props.setMensagens(mensagensAntigas => [...mensagensAntigas, {
+                nome,
+                mensagem
+            }])
+            setNome('')
+            setMensagem('')
+        }
     }
     return(
         <footer class="container-fluid text-center py-5 rodape__cor-fundo">

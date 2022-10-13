@@ -45,9 +45,12 @@ export default function Modal(props){
         }else if(categoria == "Diversos"){
             categoriaPost = 'D'
         }
-        if(preco < 0 ){
-            alert('preço negativo ?')
-        }else{
+        if(titulo.length < 3){
+            alert('Preço invalido')
+        }else if(preco < 1){
+            alert('Titulo curto demais')
+        }
+            else{
             http.put(`produtos/${id}/`,{
                 titulo: titulo,
                 preco: preco,

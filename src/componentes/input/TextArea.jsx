@@ -6,6 +6,7 @@ export default function TextArea(props){
         placeholder={props.children} 
         rows="3"
         value={props.value}
+        required
         >
 
         </textarea>

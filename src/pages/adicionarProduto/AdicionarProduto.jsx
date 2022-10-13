@@ -26,9 +26,22 @@ export default function AdicionarProduto(props){
         }else if(categoria == "Diversos"){
             categoriaPost = 'D'
         }
-        if(preco < 0 ){
-            document.querySelector('.error-precoADD').innerHTML = 'Preço negativo ?'
-        }else{
+        if(titulo.length < 3){
+            document.querySelector('.error-titulo').innerHTML = 'Titulo curto demais'
+            document.querySelector('.error-preco').innerHTML = ''
+            document.querySelector('.error-titulo').innerHTML = ''
+        }
+        else if(preco < 1){
+            document.querySelector('.error-preco').innerHTML = 'Preço invalido'
+            document.querySelector('.error-titulo').innerHTML = ''
+            document.querySelector('.error-titulo').innerHTML = ''
+            
+        }else if(descricao.length < 3){
+            document.querySelector('.error-titulo').innerHTML = 'Descrição curta demais'
+            document.querySelector('.error-titulo').innerHTML = ''
+            document.querySelector('.error-preco').innerHTML = ''
+        }
+        else{
             http.post('produtos/',
              {
                  titulo:titulo,
@@ -86,12 +99,13 @@ export default function AdicionarProduto(props){
                         <Input type="text" onChange={(evento) => {setTitulo(evento.target.value)}} value={titulo}>
                             Nome do produto
                         </Input>
+                        <p className="error-titulo text-danger m-0 p-0 text-start"></p>
                     </div>
                     <div class="mb-3">
                         <Input type="number" onChange={(evento) => {setPreco(evento.target.value)}} value={preco}>
                             Preço do produto
                         </Input>
-                        <p className="error-precoADD text-danger m-0 p-0 text-start"></p>
+                        <p className="error-preco text-danger m-0 p-0 text-start"></p>
                     </div>
                     <TextArea onChange={(evento) => {setDescricao(evento.target.value)}} value={descricao}>
                         Descrição do produto
