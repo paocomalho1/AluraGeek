@@ -9,7 +9,7 @@ function App() {
   const [user,setUser] = useState(
     {
       email:'admin@admin.com',
-      senha:'admin'
+      senha:'superadmin'
     }
   )
   const [autenticado, setAutenticar] = useState(false)

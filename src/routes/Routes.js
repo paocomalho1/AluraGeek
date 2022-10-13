@@ -21,7 +21,9 @@ export default function AppRouter(props){
                 <Route path='/produtos' element={<Produtos autenticado={props.autenticado} filtragem={props.filtragem} produtos={props.produtos} setProdutos={props.setProdutos} setEditar={props.setEditar} setDeletar={props.setDeletar}/>}/>
                 <Route path='/login' element={<Login user={props.user} setAutenticar={props.setAutenticar}/>}/>
                 <Route path='/produto/:id' element={<Produto produtos={props.produtos} setProdutos={props.setProdutos}/>}/>
-                <Route path='/adicionarproduto' element={<AdicionarProduto setProdutos={props.setProdutos} produtos={props.produtos} setAdicionar={props.setAdicionar}/>}/>
+                {props.autenticado &&
+                    <Route path='/adicionarproduto' element={<AdicionarProduto setProdutos={props.setProdutos} produtos={props.produtos} setAdicionar={props.setAdicionar}/>}/>
+                }
                 <Route path='*' element={<NotFound/>}/>
             </Routes>
             <Rodape setMensagens={props.setMensagens} mensagens={props.mensagens}/>
