@@ -52,12 +52,7 @@ export default function Modal(props){
          url: url,
          descricao:descricao,
          user:1
-        },{
-            auth:{
-                username:process.env.REACT_APP_USER,
-                password:process.env.REACT_APP_SENHA
-            }
-            })
+        })
         props.setProdutos(lista)
          setTitulo('')
          setPreco('')

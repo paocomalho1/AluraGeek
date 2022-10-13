@@ -7,12 +7,7 @@ import '../../pages/produtos/Produtos.scss'
 export default function Itens(props){
     function deletarProduto(id){
         const lista = props.produtos.filter(prod => prod.id !== id)
-        http.delete(`produtos/${id}/`,{
-            auth:{
-                username:process.env.REACT_APP_USER,
-                password:process.env.REACT_APP_SENHA
-            }
-            })
+        http.delete(`produtos/${id}/`)
         props.setProdutos(lista)
         props.setDeletar(true)
     }

@@ -34,12 +34,7 @@ export default function AdicionarProduto(props){
                  url: url,
                  descricao:descricao,
                  user:1,
-             },{
-                auth:{
-                    username:process.env.REACT_APP_USER,
-                    password:process.env.REACT_APP_SENHA
-                }
-                }
+             }
          )
          props.setProdutos(produtosAntigos => [...produtosAntigos, {
              id,
