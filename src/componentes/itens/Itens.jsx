@@ -27,7 +27,7 @@ export default function Itens(props){
     <>
         <div class="col-lg-2 col-md-3 col-sm-6 col-6">
             <div className={`card border-none background-color-none`}>
-                <div className="produto__img card-img-top border-none p-2 d-flex justify-content-end align-items-start" style={{backgroundImage: `url(${props.item.url})`}} onClick={() =>{console.log(props.autenticado)}}>
+                <div className="produto__img card-img-top border-none p-2 d-flex justify-content-end align-items-start" style={{background: `url(${props.item.url}) center / cover`}}>
                     {props.autenticado && <i className="material-symbols-outlined text-light cursor-pointer" onClick={() => {deletarProduto(props.item.id)}}>Delete</i>}
                     {props.autenticado && <i className="material-symbols-outlined text-light cursor-pointer" data-bs-toggle="modal" data-bs-target={`#modal${props.item.id}`}>Edit</i>}
                 </div>

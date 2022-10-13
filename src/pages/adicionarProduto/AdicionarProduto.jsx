@@ -12,7 +12,7 @@ export default function AdicionarProduto(props){
     let [id] = useState(uuidv4())
     let [titulo,setTitulo] = useState('')
     let [preco,setPreco] = useState('')
-    let [categoria,setCategoria] = useState('')
+    let [categoria,setCategoria] = useState('Star Wars')
     let [url,setUrl] = useState('')
     let [descricao,setDescricao] = useState('')
 
@@ -27,17 +27,18 @@ export default function AdicionarProduto(props){
             categoriaPost = 'D'
         }
         if(titulo.length < 3){
+            console.log(categoria)
             document.querySelector('.error-titulo').innerHTML = 'Titulo curto demais'
             document.querySelector('.error-preco').innerHTML = ''
-            document.querySelector('.error-titulo').innerHTML = ''
+            document.querySelector('.error-descricao').innerHTML = ''
         }
         else if(preco < 1){
             document.querySelector('.error-preco').innerHTML = 'Preço invalido'
             document.querySelector('.error-titulo').innerHTML = ''
-            document.querySelector('.error-titulo').innerHTML = ''
+            document.querySelector('.error-descricao').innerHTML = ''
             
         }else if(descricao.length < 3){
-            document.querySelector('.error-titulo').innerHTML = 'Descrição curta demais'
+            document.querySelector('.error-descricao').innerHTML = 'Descrição curta demais'
             document.querySelector('.error-titulo').innerHTML = ''
             document.querySelector('.error-preco').innerHTML = ''
         }
@@ -110,6 +111,7 @@ export default function AdicionarProduto(props){
                     <TextArea onChange={(evento) => {setDescricao(evento.target.value)}} value={descricao}>
                         Descrição do produto
                     </TextArea>
+                    <p className="error-descricao text-danger m-0 p-0 text-start"></p>
                     <BotaoLoginCadastroForm>Adicionar produto</BotaoLoginCadastroForm>
                 </form>
             </section>
