@@ -3,14 +3,26 @@ import '../../pages/corpo/Corpo.scss'
 import http from '../../http'
 import Modal from './modal/Modal'
 import '../../pages/produtos/Produtos.scss'
+import ModalDelete from './modal/ModalDelete'
+import { useEffect, useState } from 'react'
 
 export default function Itens(props){
+    const [modal,setModal] = useState(false)
+    const [del,setDel] = useState(false)
+    const [id,setId] = useState()
     function deletarProduto(id){
-        const lista = props.produtos.filter(prod => prod.id !== id)
-        http.delete(`produtos/${id}/`)
-        props.setProdutos(lista)
-        props.setDeletar(true)
+        setId(id)
+        setModal(true)
     }
+    useEffect(()=>{
+        if(del){
+            const lista = props.produtos.filter(prod => prod.id !== id)
+            http.delete(`produtos/${id}/`)
+            props.setProdutos(lista)
+            props.setDeletar(true)
+            setDel(false)
+        }
+    },[del])
     return(
     <>
         <div class="col-lg-2 col-md-3 col-sm-6 col-6">
@@ -33,6 +45,12 @@ export default function Itens(props){
             produtos={props.produtos}
             setEditar={props.setEditar}
         />
+        {modal && 
+            <ModalDelete
+                setDel={setDel}
+                setModal={setModal}
+            />
+        }
     </>
     )
 }

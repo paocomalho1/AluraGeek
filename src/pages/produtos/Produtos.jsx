@@ -2,6 +2,7 @@ import './Produtos.scss'
 import {Link} from 'react-router-dom'
 import Botao from '../../componentes/botao/Botao'
 import Itens from '../../componentes/itens/Itens'
+import ModalDelete from '../../componentes/itens/modal/ModalDelete'
 
 export default function Produtos(props){
     return(
@@ -24,7 +25,6 @@ export default function Produtos(props){
                                 setEditar={props.setEditar}
                             />
                         ))}
-
                 </section>
             </div>
         </main>

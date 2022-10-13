@@ -26,7 +26,10 @@ export default function AdicionarProduto(props){
         }else if(categoria == "Diversos"){
             categoriaPost = 'D'
         }
-         http.post('produtos/',
+        if(preco < 0 ){
+            document.querySelector('.error-precoADD').innerHTML = 'Preço negativo ?'
+        }else{
+            http.post('produtos/',
              {
                  titulo:titulo,
                  preco:preco,
@@ -53,6 +56,7 @@ export default function AdicionarProduto(props){
         setDescricao('')
         props.setAdicionar(true)
         navigate('/produtos')
+        }
     }
 
     return(
@@ -87,6 +91,7 @@ export default function AdicionarProduto(props){
                         <Input type="number" onChange={(evento) => {setPreco(evento.target.value)}} value={preco}>
                             Preço do produto
                         </Input>
+                        <p className="error-precoADD text-danger m-0 p-0 text-start"></p>
                     </div>
                     <TextArea onChange={(evento) => {setDescricao(evento.target.value)}} value={descricao}>
                         Descrição do produto

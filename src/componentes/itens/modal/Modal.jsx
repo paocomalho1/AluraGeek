@@ -45,21 +45,25 @@ export default function Modal(props){
         }else if(categoria == "Diversos"){
             categoriaPost = 'D'
         }
-         http.put(`produtos/${id}/`,{
-         titulo: titulo,
-         preco: preco,
-         categoria: categoriaPost,
-         url: url,
-         descricao:descricao,
-         user:1
-        })
-        props.setProdutos(lista)
-         setTitulo('')
-         setPreco('')
-         setCategoria('')
-         setUrl('')
-         setDescricao('')
-         props.setEditar(true)
+        if(preco < 0 ){
+            alert('preço negativo ?')
+        }else{
+            http.put(`produtos/${id}/`,{
+                titulo: titulo,
+                preco: preco,
+                categoria: categoriaPost,
+                url: url,
+                descricao:descricao,
+                user:1
+               })
+               props.setProdutos(lista)
+                setTitulo('')
+                setPreco('')
+                setCategoria('')
+                setUrl('')
+                setDescricao('')
+                props.setEditar(true)
+        }
     }
       
     return(
@@ -98,6 +102,7 @@ export default function Modal(props){
                             <Input type="number" onChange={(evento) => {setPreco(evento.target.value)}} value={preco}>
                                 Preço do produto
                             </Input>
+                            <p className="error-precoEdit text-danger m-0 p-0 text-start"></p>
                         </div>
                         <TextArea onChange={(evento) => {setDescricao(evento.target.value)}} value={descricao}>
                             Descrição do produto

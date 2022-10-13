@@ -1,0 +1,73 @@
+.corpo{
+    &__notificacao{
+        z-index: 5;
+        transition: 300ms ease-in-out;
+        background-color: #00000077;
+        position: fixed;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        
+    }
+    &__Cnotificacao{
+        height: 220px;
+        width: 360px;
+        background-color: white;
+        padding: 2rem;
+        border-radius: 0.5rem;
+    }
+    &__Ntitulo{
+        margin-top: 0;
+        font-size: 1.3rem;
+        color: black;
+
+    }
+    &__Nconteudo{
+        color: black;
+        font-size: 0.9rem;
+
+    }
+    &__NCbotao{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+    &__Nbotao{
+        background-color: #00000077;
+        padding: 1rem;
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+        border-radius: 0.4rem;
+        border: none;
+        color: white;
+        font-size: 0.9rem;
+        transition: 300ms ease-in-out;
+        &:hover{
+            opacity: 0.5;
+            cursor: pointer;
+        }
+
+    }
+    &__Nbotao2{
+        background-color: red;
+        padding: 1.5rem;
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+        border-radius: 0.4rem;
+        border: none;
+        color: white;
+        font-size: 0.9rem;
+        transition: 300ms ease-in-out;
+        &:hover{
+            opacity: 0.5;
+            cursor: pointer;
+        }
+
+
+    }
+}

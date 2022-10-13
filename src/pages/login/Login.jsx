@@ -32,13 +32,13 @@ export default function Login(props){
                     <h5 className="fw-bold mb-4">Iniciar Sessão</h5>
                     <div class="mb-3">
                         <Input type="email" onChange={evento =>{setEmail(evento.target.value)}} value={email}>
-                            Escreva seu email
+                            admin@admin.com
                         </Input>
                         <p className="error-email text-danger m-0 p-0 text-start"></p>
                     </div>
                     <div class="mb-3">
                         <Input type="password" onChange={evento =>{setSenha(evento.target.value)}} value={senha}>
-                            Escreva sua senha
+                            superadmin
                         </Input>
                         <p className="error-senha text-danger m-0 p-0 text-start"></p>
                     </div>
