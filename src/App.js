@@ -2,7 +2,6 @@ import Router from './routes/Routes';
 import { useEffect, useState } from 'react';
 import json from './componentes/itens/ItensDados.json'
 import http from './http';
-import env from "react-dotenv";
 
 function App() {
   const [produtos ,setProdutos] = useState([json])
