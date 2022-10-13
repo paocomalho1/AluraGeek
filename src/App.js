@@ -20,12 +20,7 @@ function App() {
   ])
   const [filtro, setFiltro] = useState("")
   useEffect(()=>{
-    http.get('users/1',{
-      auth:{
-        username:process.env.REACT_APP_USER,
-        password:process.env.REACT_APP_SENHA
-      }
-    }).then(resposta =>{
+    http.get('users/1').then(resposta =>{
       setUser(resposta.data)
     })
     http.get('users/1/produtos')
