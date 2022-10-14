@@ -10,7 +10,7 @@ Rápida descrição do objetivo de fazer esse projeto
 | :fire: Desafio     | https://github.com/paocomalho1/AluraGeek
 
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
-![](https://trello.com/1/cards/620bf3f8bf76ff71199adca0/attachments/620bf3f9bf76ff71199adec3/download/Logo.png)
+![](https://trello.com/1/cards/620bf3f8bf76ff71199adca0/attachments/620bf3f9bf76ff71199adec3/download/Logo.png#vitrinedev)
 
 ## Detalhes do projeto
 
